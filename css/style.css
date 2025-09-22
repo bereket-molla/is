@@ -304,6 +304,12 @@ a:hover {
     /* No text color change - only underline changes via Rough Notation */
 }
 
+.paper-title-nolink {
+    color: var(--base03);  /* Same color as links */
+    font-weight: 600;      /* Same weight as links */
+    cursor: default;       /* Not a pointer since it's not clickable */
+}
+
 .paper-authors {
     font-size: 15px;
     color: var(--base02);  /* Darker secondary text */

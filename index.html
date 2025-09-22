@@ -139,7 +139,7 @@
                     </div>
                     <div class="research-item">
                         <div class="paper-title">
-                            Dexterity with Eigen Grasps (Ongoing)
+                            <span class="paper-title-nolink">Dexterity with Eigen Grasps (Ongoing)</span>
                         </div>
                         <div class="paper-authors">PyTorch implementation of Eigen Grasps for low-dimensional control. RL extension for stable grasps under uncertainty.</div>
                     </div>
@@ -414,6 +414,49 @@
                 link.addEventListener('mouseleave', () => {
                     annotation.remove();
                     annotation = annotate(link, {
+                        type: 'underline',
+                        color: 'rgba(88, 110, 117, 0.3)', // Back to subtle
+                        strokeWidth: 2,
+                        padding: 2,
+                        iterations: 2,
+                        animationDuration: 300
+                    });
+                    annotation.show();
+                });
+            });
+            
+            // Special handling for non-link project titles - same styling as links but no hover
+            const nonLinkProjectTitles = document.querySelectorAll('.paper-title-nolink');
+            nonLinkProjectTitles.forEach(span => {
+                // Create initial subtle underline (no animation), same as project links
+                let annotation = annotate(span, {
+                    type: 'underline',
+                    color: 'rgba(88, 110, 117, 0.3)', // base01 with low opacity
+                    strokeWidth: 2,
+                    padding: 2,
+                    iterations: 2,
+                    animationDuration: 0 // No animation on load
+                });
+                annotation.show();
+                
+                // On hover, animate to cyan (same as project links)
+                span.addEventListener('mouseenter', () => {
+                    annotation.remove();
+                    annotation = annotate(span, {
+                        type: 'underline',
+                        color: '#2aa198', // Cyan on hover
+                        strokeWidth: 2,
+                        padding: 2,
+                        iterations: 2,
+                        animationDuration: 300
+                    });
+                    annotation.show();
+                });
+                
+                // On mouse leave, animate back to subtle
+                span.addEventListener('mouseleave', () => {
+                    annotation.remove();
+                    annotation = annotate(span, {
                         type: 'underline',
                         color: 'rgba(88, 110, 117, 0.3)', // Back to subtle
                         strokeWidth: 2,
