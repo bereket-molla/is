@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexterity with Eigen Grasps — Bereket Abebe Molla</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+    <style>
+        /* Blog-specific styles */
+        .blog-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee8d5;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--base03);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            font-family: "Inconsolata", monospace;
+            font-size: 0.9rem;
+            color: var(--base00);
+        }
+        
+        .blog-meta .author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--base00);
+            text-decoration: none;
+            font-family: "Inconsolata", monospace;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--blue);
+        }
+        
+        .blog-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: rgba(238, 232, 213, 0.3);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .blog-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--base01);
+            font-family: "Inconsolata", monospace;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .blog-nav-item.active {
+            background: var(--base2);
+            color: var(--base03);
+            border-color: var(--blue);
+        }
+        
+        .blog-nav-item:hover:not(.active) {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .part-number {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--base01);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            color: var(--base00);
+        }
+        
+        .blog-content h2 {
+            margin: 2.5rem 0 1rem 0;
+            color: var(--base03);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .blog-content h3 {
+            margin: 2rem 0 0.8rem 0;
+            color: var(--base02);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .blog-content code {
+            font-family: "Inconsolata", monospace;
+            background: rgba(238, 232, 213, 0.5);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        .blog-content pre {
+            background: #002b36;
+            color: #839496;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: "Inconsolata", monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .blog-content blockquote {
+            border-left: 4px solid var(--blue);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--base01);
+        }
+        
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .motivation-box {
+            background: linear-gradient(135deg, rgba(38, 139, 210, 0.05), rgba(42, 161, 152, 0.05));
+            border-left: 4px solid var(--cyan);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .motivation-box h3 {
+            margin-top: 0;
+            color: var(--cyan);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .next-part {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee8d5;
+            text-align: center;
+        }
+        
+        .next-part-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .next-part-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 139, 210, 0.3);
+        }
+        
+        .coming-soon {
+            color: var(--base01);
+            font-style: italic;
+            font-family: "Caveat", cursive;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Back to portfolio -->
+        <a href="index.html" class="back-link">
+            <span>←</span>
+            <span>Back to Portfolio</span>
+        </a>
+        
+        <!-- Blog Header -->
+        <header class="blog-header">
+            <h1 class="blog-title">Dexterity with Eigen Grasps</h1>
+            <div class="blog-meta">
+                <div class="author">
+                    <span>by</span>
+                    <strong>Bereket Abebe Molla</strong>
+                </div>
+                <div class="date">December 2024</div>
+            </div>
+        </header>
+        
+        <!-- Blog Navigation -->
+        <nav class="blog-nav">
+            <a href="#part1" class="blog-nav-item active">
+                <span class="part-number">Part 1</span>
+                <span>Introduction & Motivation</span>
+            </a>
+            <a href="#part2" class="blog-nav-item">
+                <span class="part-number">Part 2</span>
+                <span class="coming-soon">Implementation Details</span>
+            </a>
+            <a href="#part3" class="blog-nav-item">
+                <span class="part-number">Part 3</span>
+                <span class="coming-soon">RL Extension</span>
+            </a>
+            <a href="#part4" class="blog-nav-item">
+                <span class="part-number">Part 4</span>
+                <span class="coming-soon">Results & Future Work</span>
+            </a>
+        </nav>
+        
+        <!-- Blog Content -->
+        <article class="blog-content" id="part1">
+            <h2>Part 1: Introduction & Motivation</h2>
+            
+            <p>
+                When I first started working on robotic grasping problems, I was struck by a fundamental challenge: 
+                how do we control high-dimensional robotic hands efficiently? Modern robotic hands can have 20+ degrees 
+                of freedom, making control incredibly complex. This is where <strong>Eigen Grasps</strong> come in.
+            </p>
+            
+            <div class="motivation-box">
+                <h3>💡 The Core Insight</h3>
+                <p>
+                    Instead of controlling each joint independently, what if we could find a lower-dimensional 
+                    representation that captures the most important grasp patterns? This is exactly what Eigen Grasps 
+                    do — they're like PCA for hand configurations.
+                </p>
+            </div>
+            
+            <h3>What are Eigen Grasps?</h3>
+            
+            <p>
+                Eigen Grasps are a dimensionality reduction technique for robotic hand control, inspired by the way 
+                human hands exhibit <em>synergies</em> — coordinated movements of multiple joints. When you reach for 
+                a coffee mug, you don't consciously control each finger joint; instead, your brain coordinates them in 
+                learned patterns.
+            </p>
+            
+            <p>
+                Mathematically, we can represent this as:
+            </p>
+            
+            <pre><code># Hand configuration in joint space
+q = q_mean + Σ(αᵢ * eᵢ)
+
+# Where:
+# q_mean = mean hand configuration
+# eᵢ = i-th eigen grasp (principal component)
+# αᵢ = control parameter for i-th eigen grasp</code></pre>
+            
+            <h3>Why PyTorch?</h3>
+            
+            <p>
+                Most existing implementations of Eigen Grasps use traditional robotics frameworks. By implementing this 
+                in PyTorch, we unlock several advantages:
+            </p>
+            
+            <ul>
+                <li><strong>Differentiability</strong>: We can backpropagate through the grasp representation</li>
+                <li><strong>GPU Acceleration</strong>: Parallel evaluation of multiple grasp configurations</li>
+                <li><strong>Deep Learning Integration</strong>: Easy to combine with neural networks for learning-based approaches</li>
+                <li><strong>Reinforcement Learning</strong>: Natural integration with modern RL frameworks</li>
+            </ul>
+            
+            <h3>The Uncertainty Challenge</h3>
+            
+            <p>
+                Real-world grasping isn't just about finding good configurations — it's about handling uncertainty. 
+                Objects have unknown properties, sensors are noisy, and the environment is unpredictable. This is why 
+                I'm extending the basic Eigen Grasp framework with reinforcement learning.
+            </p>
+            
+            <blockquote>
+                "The best grasp isn't always the one that looks perfect in simulation — it's the one that works 
+                reliably despite all the things we don't know."
+            </blockquote>
+            
+            <h3>Project Goals</h3>
+            
+            <ol>
+                <li>
+                    <strong>Implement Core Eigen Grasp Algorithm</strong><br>
+                    Build a clean, efficient PyTorch implementation with proper abstractions
+                </li>
+                <li>
+                    <strong>Add RL for Robust Grasping</strong><br>
+                    Use reinforcement learning to find grasps that are stable under uncertainty
+                </li>
+                <li>
+                    <strong>Create Useful Tools</strong><br>
+                    Provide visualization, analysis, and benchmarking utilities
+                </li>
+                <li>
+                    <strong>Open Source Everything</strong><br>
+                    Make this accessible to the robotics and ML communities
+                </li>
+            </ol>
+            
+            <div class="next-part">
+                <p class="coming-soon">Part 2: Implementation Details — Coming Soon</p>
+                <p style="color: var(--base01); margin-top: 1rem;">
+                    In the next part, we'll dive into the technical implementation, including the PyTorch architecture, 
+                    data structures, and optimization techniques.
+                </p>
+            </div>
+        </article>
+    </div>
+    
+    <script>
+        const { annotate } = RoughNotation;
+        
+        // Add rough notation to inline code
+        document.addEventListener('DOMContentLoaded', () => {
+            // Annotate important terms
+            const importantTerms = document.querySelectorAll('strong');
+            importantTerms.forEach(term => {
+                if (term.textContent.includes('Eigen Grasp')) {
+                    const annotation = annotate(term, {
+                        type: 'highlight',
+                        color: 'rgba(42, 161, 152, 0.2)',
+                        iterations: 1,
+                        animationDuration: 800
+                    });
+                    annotation.show();
+                }
+            });
+            
+            // Handle navigation active states
+            const navItems = document.querySelectorAll('.blog-nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    if (!item.querySelector('.coming-soon')) {
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        item.classList.add('active');
+                    } else {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

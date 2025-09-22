@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Style Guide — Bereket Abebe Molla</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inconsolata:wght@400;500;700;900&family=Caveat:wght@400;500;600;700&family=Reenie+Beanie&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+    
+    <!-- MathJax for math typesetting -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    
+    <!-- Garamond Premier Pro Fonts - Tyler's Exact Mapping -->
+    <style>
+        /* Date - Caption */
+        @font-face {
+            font-family: 'garamond-caption';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-capt-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-capt-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Main Title - Bold Display */
+        @font-face {
+            font-family: 'garamond-bold-display';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-bddisp-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-bddisp-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Subtitle - Italic */
+        @font-face {
+            font-family: 'garamond-italic';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-it-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-it-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Meta Text - Italic Caption */
+        @font-face {
+            font-family: 'garamond-italic-caption';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-itcapt-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-itcapt-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Section Headings - Bold Subhead */
+        @font-face {
+            font-family: 'garamond-bold-subhead';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-bdsubh-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-bdsubh-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Body Text - Regular */
+        @font-face {
+            font-family: 'garamond-regular';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-webfont.woff') format('woff');
+            font-display: swap;
+        }
+        
+        /* Bold Text - Bold */
+        @font-face {
+            font-family: 'garamond-bold';
+            src: url('fonts/webfontkit-20250911-003522/garamondpremrpro-bd-webfont.woff2') format('woff2'),
+                 url('fonts/webfontkit-20250911-003522/garamondpremrpro-bd-webfont.woff') format('woff');
+            font-display: swap;
+        }
+    </style>
+    
+    <style>
+        /* Blog container - matching Tyler's width */
+        .blog-container {
+            max-width: 36rem;  /* 36rem width */
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* Blog post header - Tyler's style */
+        .blog-header {
+            margin-bottom: 3rem;
+        }
+        
+        .blog-date {
+            color: var(--base01);  /* Subtle gray color */
+            font-size: 18px;
+            margin-bottom: 0.5rem;
+            font-family: 'Caveat', cursive;  /* Handwritten style for date */
+            font-weight: 600;
+            display: block;
+        }
+        
+        .blog-title {
+            font-size: 3rem;  /* Large but not too large */
+            font-weight: 400;  /* Regular weight like Tyler's */
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            margin-top: 0;
+            color: var(--base03);
+            font-family: 'garamond-bold-display', 'EB Garamond', serif;  /* Tyler's bold display */
+            display: block;
+        }
+        
+        .blog-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: var(--base01);
+            font-family: 'garamond-caption', 'EB Garamond', serif;  /* Caption font for subtitle */
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-meta {
+            font-size: 1rem;
+            color: var(--base01);
+            font-family: 'garamond-caption', 'EB Garamond', serif;  /* Caption font for meta */
+            font-weight: 400;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--base2);
+        }
+        
+        /* Blog content typography */
+        .blog-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--base03);
+            font-family: 'garamond-bold-subhead', 'EB Garamond', serif;  /* Tyler's bold subhead */
+            position: relative;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--base02);
+            font-family: 'garamond-bold-subhead', 'EB Garamond', serif;  /* Tyler's bold subhead */
+            position: relative;
+        }
+        
+        /* Anchor links for headings */
+        .blog-content h2 .anchor,
+        .blog-content h3 .anchor {
+            width: 30px;
+            position: absolute;
+            margin-left: -40px;
+            text-align: right;
+            font-weight: 400;
+            text-decoration: none;
+            color: var(--base01);
+            font-family: 'garamond-regular', 'EB Garamond', serif;
+            opacity: 1;
+            top: 5px;
+            line-height: 1;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            color: var(--base03);
+            font-family: 'garamond-regular', 'EB Garamond', serif;  /* Tyler's regular body */
+        }
+        
+        /* Links - Tyler's style */
+        .blog-content a {
+            color: var(--blue);
+            text-decoration: underline;
+            text-decoration-color: rgba(38, 139, 210, 0.3);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s;
+        }
+        
+        .blog-content a:hover {
+            text-decoration-color: var(--blue);
+        }
+        
+        /* Lists */
+        .blog-content ol {
+            list-style: none;
+            counter-reset: item;
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+        }
+        
+        .blog-content ol li {
+            counter-increment: item;
+            margin-left: 1.5rem;
+            text-indent: -1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .blog-content ol li::before {
+            content: counter(item) ".";
+            margin-right: 0.5rem;
+            font-family: 'Caveat', cursive;
+            font-weight: 600;
+            font-size: 1.2em;
+            color: var(--orange);
+        }
+        
+        .blog-content ul {
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            list-style: none;
+        }
+        
+        .blog-content ul li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-content ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: -50%;
+    
+            font-family: 'Caveat', cursive;
+            font-weight: 600;
+            font-size: 2em;
+            color: var(--orange);
+            line-height: 1.6;
+        }
+        
+        /* Code blocks - Solarized Light */
+        .blog-content pre {
+            background: #fdf6e3;
+            border: 1px solid #eee8d5;
+            border-radius: 4px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Inconsolata', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .blog-content code {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.9em;
+        }
+        
+        /* Inline code */
+        .blog-content :not(pre) > code {
+            background: rgba(238, 232, 213, 0.5);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: var(--magenta);
+        }
+        
+        /* Code with line numbers */
+        .code-block {
+            background: #fdf6e3;
+            border: 1px solid #eee8d5;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            display: flex;
+            overflow-x: auto;
+        }
+        
+        .line-numbers {
+            padding: 1rem 0.75rem;
+            color: #93a1a1;
+            font-family: 'Inconsolata', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: right;
+            user-select: none;
+            border-right: 1px solid #eee8d5;
+            min-width: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .code-content {
+            padding: 1rem;
+            flex: 1;
+            font-family: 'Inconsolata', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .code-content pre {
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+        
+        /* Blockquotes */
+        .blog-content blockquote {
+            border-left: 3px solid var(--base1);
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+            font-style: italic;
+            color: var(--base01);
+        }
+        
+        /* Emphasis */
+        .blog-content strong {
+            font-weight: 400;
+            color: var(--base03);
+            font-family: 'garamond-bold', 'EB Garamond', serif;  /* Tyler's bold */
+        }
+        
+        .blog-content em {
+            font-style: italic;
+        }
+        
+        /* Footnotes */
+        .footnote {
+            font-size: 0.85rem;
+            vertical-align: super;
+            color: var(--blue);
+        }
+        
+        .footnotes {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--base2);
+            font-size: 0.9rem;
+        }
+        
+        /* Demo sections for style guide */
+        .demo-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--base2);
+        }
+        
+        .demo-section:last-child {
+            border-bottom: none;
+        }
+        
+        .demo-label {
+            font-family: "Caveat", cursive;
+            font-size: 18px;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+        
+        /* Solarized Light syntax highlighting colors */
+        .keyword { color: #859900; } /* green */
+        .string { color: #2aa198; }  /* cyan */
+        .number { color: #d33682; }  /* magenta */
+        .comment { color: #93a1a1; } /* base1 */
+        .function { color: #268bd2; } /* blue */
+        .variable { color: #cb4b16; } /* orange */
+        .operator { color: #586e75; } /* base01 */
+        
+        /* Math styling */
+        mjx-container {
+            margin: 0 0.2em !important;
+        }
+        
+        /* Robot Arm Styling */
+        .robot-arm-container {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            align-items: flex-start;
+        }
+        
+        #robot-arm-svg svg {
+            border: 2px solid var(--base1);
+            border-radius: 8px;
+            background: var(--base3);
+            display: block;
+        }
+        
+        .robot-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 200px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-family: 'garamond-regular', 'EB Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--base02);
+            font-weight: 600;
+        }
+        
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--base2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--orange);
+            cursor: pointer;
+            border: 2px solid var(--base3);
+        }
+        
+        .control-group input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--orange);
+            cursor: pointer;
+            border: 2px solid var(--base3);
+        }
+        
+        .angle-display {
+            font-family: 'Inconsolata', monospace;
+            font-size: 0.8rem;
+            color: var(--base01);
+            text-align: center;
+            background: var(--base2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        mjx-container[display="true"] {
+            margin: 1.5rem 0 !important;
+            overflow-x: auto;
+        }
+        
+        mjx-container svg {
+            color: var(--violet) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Blog Post Example -->
+        <article class="blog-post">
+            <header class="blog-header">
+                <div class="blog-date">05 Mar 2024</div>
+                <h1 class="blog-title">The "missing" graph datatype was invented in the '70s</h1>
+                
+                <p class="blog-meta">
+                    This post is a response to/inspired by something. Meta information goes here.
+                </p>
+            </header>
+            
+            <div class="blog-content">
+                <!-- Regular Sections -->
+                <div class="demo-section">
+                    <span class="demo-label">typography</span>
+                    
+                    <h2 id="section-heading"><a href="#section-heading" class="anchor">#</a>Section Heading (H2)</h2>
+                    <p>
+                        This is how body paragraphs look. They have 1.6 line-height and comfortable spacing.
+                        The text is justified and uses automatic hyphenation for optimal readability.
+                    </p>
+                    
+                    <h3 id="subsection-heading"><a href="#subsection-heading" class="anchor">#</a>Subsection Heading (H3)</h3>
+                    <p>
+                        Another paragraph with <strong>bold text</strong> and <em>italic text</em> for emphasis.
+                        Links look <a href="#">like this with subtle underline</a> that darkens on hover.
+                    </p>
+                </div>
+                
+                <!-- Lists -->
+                <div class="demo-section">
+                    <span class="demo-label">lists</span>
+                    
+                    <p>Ordered list like Tyler's:</p>
+                    <ol>
+                        <li>There are too many types of graphs.</li>
+                        <li>There are too many graph algorithms.</li>
+                        <li>Even if you focus on one particular type of graph, there are many possible different graph representations.</li>
+                        <li>The graph representation you choose has a large effect on performance.</li>
+                    </ol>
+                    
+                    <p>Unordered list:</p>
+                    <ul>
+                        <li>First item in the list</li>
+                        <li>Second item with more text</li>
+                        <li>Third item</li>
+                    </ul>
+                </div>
+                
+                <!-- Code Blocks -->
+                <div class="demo-section">
+                    <span class="demo-label">code blocks</span>
+                    
+                    <p>Inline code: <code>path(a, b)</code> and <code>edge(c, b)</code>.</p>
+                    
+                    <p>Code block with Solarized Light theme:</p>
+                    <div class="code-block">
+                        <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6</div>
+                        <div class="code-content">
+                            <pre><code><span class="function">edge</span>(<span class="number">1</span>, <span class="number">2</span>).
+<span class="function">edge</span>(<span class="number">2</span>, <span class="number">3</span>).
+<span class="function">edge</span>(<span class="number">3</span>, <span class="number">4</span>).
+
+<span class="function">path</span>(<span class="variable">a</span>, <span class="variable">b</span>) <span class="operator">:-</span> <span class="function">edge</span>(<span class="variable">a</span>, <span class="variable">b</span>).
+<span class="function">path</span>(<span class="variable">a</span>, <span class="variable">b</span>) <span class="operator">:-</span> <span class="function">path</span>(<span class="variable">a</span>, <span class="variable">c</span>), <span class="function">edge</span>(<span class="variable">c</span>, <span class="variable">b</span>).</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p>SQL example:</p>
+                    <pre><code><span class="keyword">SELECT</span> path.from, edge.to 
+<span class="keyword">FROM</span> path 
+<span class="keyword">INNER JOIN</span> edge <span class="keyword">ON</span> path.to = edge.from;</code></pre>
+                </div>
+                
+                <!-- Blockquotes -->
+                <div class="demo-section">
+                    <span class="demo-label">blockquotes</span>
+                    
+                    <blockquote>
+                        This is a blockquote. It has a left border and italic text, perfect for highlighting important quotes or ideas from the text.
+                    </blockquote>
+                </div>
+                
+                <!-- Math -->
+                <div class="demo-section">
+                    <span class="demo-label">mathematics</span>
+                    
+                    <p>
+                        Inline math: The join produces tuples where $path.to = edge.from$.
+                    </p>
+                    
+                    <p>Display math:</p>
+                    $$\text{path}(a, b) \leftarrow \text{edge}(a, b)$$
+                    
+                    <p>
+                        More complex equation:
+                    </p>
+                    $$\bigcup_{i=0}^{\infty} R^i = R^* \text{ (transitive closure)}$$
+                </div>
+                
+                <!-- Special Elements from Portfolio -->
+                <div class="demo-section">
+                    <span class="demo-label">portfolio elements</span>
+                    
+                    <p>
+                        Text with <span class="subtle-tech">subtle emphasis</span> like in your portfolio.
+                    </p>
+                    
+                    <p>
+                        Project link: <a href="#" class="current-project">Important Project Name</a>
+                    </p>
+                    
+                    <div class="joey-quote">
+                        "you are afraid of bugs? <span class="crossed-word">get</span>create a bug"
+                    </div>
+                    
+                    <p style="margin-top: 20px;">
+                        Small note: <span class="about-small">This is small and subtle text</span>
+                    </p>
+                    
+                    <p>
+                        Emoticons: <span class="math-laugh">:)</span> and <span class="no-rank-note">:|</span>
+                    </p>
+                </div>
+                
+                <!-- Interactive Robot Arm -->
+                <div class="demo-section">
+                    <span class="demo-label">interactive robot arm</span>
+                    
+                    <h3 id="robot-arm">Two-Finger Robot Arm <a href="#robot-arm" class="anchor">#</a></h3>
+                    <p>
+                        Interactive visualization of a two-finger robot arm with controllable joint angles.
+                        Use the sliders below to control each joint's angle and see how the finger configuration changes.
+                        Each joint controls how much that segment bends relative to the previous segment.
+                    </p>
+                    
+                    <div class="robot-arm-container">
+                        <div id="robot-arm-svg" style="width:400px;height:300px"></div>
+                        <div class="robot-controls">
+                            <div class="control-group">
+                                <label for="finger1-seg1">Finger 1, Joint 1:</label>
+                                <input type="range" id="finger1-seg1" min="-90" max="90" value="-30" step="1">
+                                <span class="angle-display" id="finger1-seg1-value">-30°</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="finger1-seg2">Finger 1, Joint 2:</label>
+                                <input type="range" id="finger1-seg2" min="-90" max="90" value="0" step="1">
+                                <span class="angle-display" id="finger1-seg2-value">0°</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="finger2-seg1">Finger 2, Joint 1:</label>
+                                <input type="range" id="finger2-seg1" min="-90" max="90" value="30" step="1">
+                                <span class="angle-display" id="finger2-seg1-value">30°</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="finger2-seg2">Finger 2, Joint 2:</label>
+                                <input type="range" id="finger2-seg2" min="-90" max="90" value="0" step="1">
+                                <span class="angle-display" id="finger2-seg2-value">0°</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Joint Angles (Matrix) -->
+                <div class="demo-section">
+                    <span class="demo-label">joint angles</span>
+                    <div id="angles-matrix">
+                        $$\begin{bmatrix}
+                        0 & 0 \\
+                        0 & 0
+                        \end{bmatrix}$$
+                    </div>
+                </div>
+                
+                <!-- Rough Notation Elements -->
+                <div class="demo-section">
+                    <span class="demo-label">annotations</span>
+                    
+                    <p>
+                        Text with <span class="highlight-demo">subtle highlight</span> like Columbia University.
+                    </p>
+                    
+                    <div class="bracket-demo" style="position: relative; padding: 20px;">
+                        <p>Content with bracket annotation</p>
+                        <p>Like Amazon jobs or Robotics projects</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    
+    <script>
+        const { annotate } = RoughNotation;
+        
+        // svg.js for crisp SVG-based arm
+        const svgjsCdn = document.createElement('script');
+        svgjsCdn.src = 'https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.2/dist/svg.min.js';
+        document.head.appendChild(svgjsCdn);
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            // Current project links
+            const currentProjects = document.querySelectorAll('.current-project');
+            currentProjects.forEach(link => {
+                let annotation = annotate(link, {
+                    type: 'underline',
+                    color: 'rgba(88, 110, 117, 0.3)',
+                    strokeWidth: 2,
+                    padding: 2,
+                    iterations: 2,
+                    animationDuration: 0
+                });
+                annotation.show();
+                
+                link.addEventListener('mouseenter', () => {
+                    annotation.remove();
+                    annotation = annotate(link, {
+                        type: 'underline',
+                        color: '#268bd2',
+                        strokeWidth: 2,
+                        padding: 2,
+                        iterations: 2,
+                        animationDuration: 300
+                    });
+                    annotation.show();
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    annotation.remove();
+                    annotation = annotate(link, {
+                        type: 'underline',
+                        color: 'rgba(88, 110, 117, 0.3)',
+                        strokeWidth: 2,
+                        padding: 2,
+                        iterations: 2,
+                        animationDuration: 300
+                    });
+                    annotation.show();
+                });
+            });
+            
+            // Highlight demo
+            const highlightDemo = document.querySelector('.highlight-demo');
+            if (highlightDemo) {
+                annotate(highlightDemo, {
+                    type: 'highlight',
+                    color: 'rgba(38, 139, 210, 0.1)',
+                    padding: 1,
+                    iterations: 1,
+                    animationDuration: 0
+                }).show();
+            }
+            
+            // Bracket demo
+            const bracketDemo = document.querySelector('.bracket-demo');
+            if (bracketDemo) {
+                const bracketAnnotation = annotate(bracketDemo, {
+                    type: 'bracket',
+                    color: '#cb4b16',
+                    strokeWidth: 2,
+                    padding: [5, 10, 5, 10],
+                    brackets: ['left'],
+                    animationDuration: 1000
+                });
+                bracketAnnotation.show();
+                
+                const label = document.createElement('span');
+                label.textContent = 'example';
+                label.style.cssText = `
+                    position: absolute;
+                    left: -70px;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(-75deg);
+                    color: #cb4b16;
+                    font-size: 18px;
+                    font-family: "Caveat", cursive;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                `;
+                bracketDemo.appendChild(label);
+            }
+            
+            // Initialize robot arm after svg.js loads
+            svgjsCdn.addEventListener('load', () => {
+                new SvgRobotArm('robot-arm-svg');
+            });
+        });
+        
+        // SVG-based Robot Arm using svg.js
+        class SvgRobotArm {
+            constructor(containerId) {
+                this.container = document.getElementById(containerId);
+                this.draw = SVG().addTo(this.container).size(400, 300).viewbox(0,0,400,300);
+                this.base = { x: 200, y: 150 };
+                this.segLen = 60;
+                this.colors = { seg: 'var(--orange)', joint: 'var(--base01)' };
+                
+                this.angles = { finger1Seg1: -30, finger1Seg2: 0, finger2Seg1: 30, finger2Seg2: 0 };
+                this.buildScene();
+                this.setupSliders();
+                this.render();
+            }
+            buildScene(){
+                this.baseCircle = this.draw.circle(16).center(this.base.x, this.base.y).fill('var(--base01)');
+                // Static arm segment to the left of the base (not movable)
+                this.arm = this.draw.line(this.base.x - this.segLen * 2, this.base.y, this.base.x, this.base.y)
+                    .stroke({ width: 2, color: 'var(--base01)', linecap: 'round' });
+                // Target to pinch
+                this.targetR = 8;
+                this.targetX = this.base.x + this.segLen * 2 - 20; // a bit closer to the arm
+                this.target = this.draw.circle(this.targetR * 2)
+                    .center(this.targetX, this.base.y)
+                    .fill('none')
+                    .stroke({ width: 2, color: 'var(--base01)' });
+                // Finger 1
+                this.f1 = this.draw.group();
+                this.f1s1 = this.draw.line(this.base.x, this.base.y, this.base.x+this.segLen, this.base.y).stroke({width:2, color:this.colors.seg, linecap:'round'});
+                this.f1.add(this.f1s1);
+                this.f1j1 = this.draw.group();
+                this.f1s2 = this.draw.line(this.base.x+this.segLen, this.base.y, this.base.x+2*this.segLen, this.base.y).stroke({width:2, color:this.colors.seg, linecap:'round'});
+                this.f1j1.add(this.f1s2);
+                this.f1.add(this.f1j1);
+                this.f1jDot = this.draw.circle(8).fill(this.colors.joint);
+                this.f1eDot = this.draw.circle(8).fill(this.colors.joint);
+                
+                // Finger 2
+                this.f2 = this.draw.group();
+                this.f2s1 = this.draw.line(this.base.x, this.base.y, this.base.x+this.segLen, this.base.y).stroke({width:2, color:this.colors.seg, linecap:'round'});
+                this.f2.add(this.f2s1);
+                this.f2j1 = this.draw.group();
+                this.f2s2 = this.draw.line(this.base.x+this.segLen, this.base.y, this.base.x+2*this.segLen, this.base.y).stroke({width:2, color:this.colors.seg, linecap:'round'});
+                this.f2j1.add(this.f2s2);
+                this.f2.add(this.f2j1);
+                this.f2jDot = this.draw.circle(8).fill(this.colors.joint);
+                this.f2eDot = this.draw.circle(8).fill(this.colors.joint);
+            }
+            setupSliders(){
+                const map = [
+                    ['finger1-seg1','finger1Seg1'],
+                    ['finger1-seg2','finger1Seg2'],
+                    ['finger2-seg1','finger2Seg1'],
+                    ['finger2-seg2','finger2Seg2'],
+                ];
+                map.forEach(([id,key]) => {
+                    const input = document.getElementById(id);
+                    const display = document.getElementById(id+'-value');
+                    input.addEventListener('input', e=>{ this.angles[key]=+e.target.value; display.textContent = e.target.value+'°'; this.render(); });
+                    input.addEventListener('change', e=>{ this.angles[key]=+e.target.value; display.textContent = e.target.value+'°'; this.render(); });
+                });
+            }
+            render(){
+                const toRad = a => (a * Math.PI) / 180;
+                const update = (s1, s2, jDot, eDot, a1, a2) => {
+                    const r1 = toRad(a1);
+                    const r2 = toRad(a2);
+                    const x1 = this.base.x;
+                    const y1 = this.base.y;
+                    const x2 = x1 + this.segLen * Math.cos(r1);
+                    const y2 = y1 + this.segLen * Math.sin(r1);
+                    s1.plot(x1, y1, x2, y2);
+                    const x3 = x2 + this.segLen * Math.cos(r1 + r2);
+                    const y3 = y2 + this.segLen * Math.sin(r1 + r2);
+                    s2.plot(x2, y2, x3, y3);
+                    jDot.center(x2, y2);
+                    eDot.center(x3, y3);
+                };
+                update(this.f1s1, this.f1s2, this.f1jDot, this.f1eDot, this.angles.finger1Seg1, this.angles.finger1Seg2);
+                update(this.f2s1, this.f2s2, this.f2jDot, this.f2eDot, this.angles.finger2Seg1, this.angles.finger2Seg2);
+                // ensure joints and base render above segments
+                this.f1jDot.front(); this.f1eDot.front();
+                this.f2jDot.front(); this.f2eDot.front();
+                this.baseCircle.front();
+
+                // Pinch feedback: highlight target when both fingertips are inside
+                const tx = this.targetX, ty = this.base.y, r = this.targetR + 2;
+                const inside = (p) => Math.hypot(p.x - tx, p.y - ty) <= r;
+                const f1e = { x: this.f1eDot.cx(), y: this.f1eDot.cy() };
+                const f2e = { x: this.f2eDot.cx(), y: this.f2eDot.cy() };
+                if (inside(f1e) && inside(f2e)) {
+                    this.target.stroke({ color: 'var(--green)', width: 3 });
+                } else {
+                    this.target.stroke({ color: 'var(--base01)', width: 2 });
+                }
+
+                // Live matrix update (MathJax)
+                const mat = document.getElementById('angles-matrix');
+                if (mat && window.MathJax && window.MathJax.typesetPromise) {
+                    const a = this.angles;
+                    const r = (n) => Math.round(n);
+                    mat.innerHTML = `$$\\begin{bmatrix}
+                        ${r(a.finger1Seg1)} & ${r(a.finger1Seg2)} \\\\
+                        ${r(a.finger2Seg1)} & ${r(a.finger2Seg2)}
+                        \\end{bmatrix}$$`;
+                    window.MathJax.typesetPromise([mat]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

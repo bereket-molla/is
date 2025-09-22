@@ -1,0 +1,576 @@
+/* Solarized Light Color Scheme */
+:root {
+    --base03: #002b36;
+    --base02: #073642;
+    --base01: #586e75;
+    --base00: #657b83;
+    --base0: #839496;
+    --base1: #93a1a1;
+    --base2: #eee8d5;
+    --base3: #fdf6e3;
+    --yellow: #b58900;
+    --orange: #cb4b16;
+    --red: #dc322f;
+    --magenta: #d33682;
+    --violet: #6c71c4;
+    --blue: #268bd2;
+    --cyan: #2aa198;
+    --green: #859900;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 18px;
+    line-height: 1.4;  /* Tighter line spacing */
+    color: var(--base03);  /* Changed to darkest color for better readability */
+    background-color: #fef8e7;  /* Lighter Solarized - between base3 and white */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 800px;  /* Optimal reading width */
+    margin: 0 auto;
+    padding: 60px 30px;
+    overflow: visible;  /* Allow bracket labels to show */
+}
+
+/* Header */
+.header {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--base2);
+}
+
+.name-section {
+    margin-bottom: 20px;
+}
+
+.copy-hint {
+    color: var(--base02);
+    font-family: "Caveat", cursive;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.name-section:hover .copy-hint {
+    opacity: 1;
+}
+
+.name {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: var(--base03);
+    font-family: 'EB Garamond', serif;
+    cursor: pointer;
+    transition: color 0.2s ease, filter 0.2s ease;
+    letter-spacing: 1px;
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.name:hover {
+    color: var(--base02);
+}
+
+.name.scrambling {
+    filter: blur(1.5px);
+    animation: scramble-blur 0.06s infinite alternate;
+}
+
+@keyframes scramble-blur {
+    0% { filter: blur(1.2px); }
+    100% { filter: blur(2px); }
+}
+
+.contact-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-link {
+    color: var(--base01);
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.icon-link:hover {
+    color: var(--blue);
+}
+
+.email {
+    display: inline-flex;
+    align-items: baseline;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+
+
+.email .email-part {
+    color: var(--base03);
+    font-family: "Caveat", cursive;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    transition: color 0.2s ease;
+}
+
+
+
+.email .at-wrapper,
+.email .dot-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 24px;
+    height: 20px;
+    vertical-align: baseline;
+}
+
+.email .dot-wrapper {
+    width: 20px;
+}
+
+.email .at {
+    color: var(--cyan);
+    font-family: "Caveat", cursive;
+    font-weight: 700;
+    font-size: 20px;
+    opacity: 0.85;
+    transition: all 0.2s ease;
+    display: block;
+    transform-origin: center center;
+}
+
+.email:hover .at {
+    color: var(--magenta);
+    opacity: 1;
+    transform:rotate(15deg);
+}
+
+.email .dot {
+    color: var(--orange);
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1;
+    transition: all 0.2s ease;
+    display: block;
+    transform-origin: center center;
+    top: 2px;
+    position: relative;
+}
+
+
+/* Old .at and .dot styles removed - now styled within .email context */
+
+/* Content Area */
+.content {
+    /* Content flows naturally within container */
+}
+
+
+/* Typography */
+h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 15px;  /* Reduced bottom margin */
+    margin-top: 0;  /* No top margin for first h2 */
+    color: var(--base02);  /* Darker heading color */
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+}
+
+h2:not(:first-child) {
+    margin-top: 30px;
+}
+
+p {
+    margin-bottom: 10px;  /* Reduced paragraph spacing */
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Links - now using Rough Notation for highlights */
+a {
+    color: var(--base03);  /* Darker text for links */
+    text-decoration: none;
+    position: relative;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: var(--base02);  /* Subtle color change on hover */
+}
+
+/* About Section */
+.about {
+    margin-bottom: 25px;  /* Reduced section spacing */
+}
+
+.about h2 {
+    margin-top: 0;  /* Align with top of sidebar */
+}
+
+/* About section special styling */
+.about-intro {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--base03);
+    margin-bottom: 18px;
+}
+
+/* Columbia styling removed */
+
+.current-project {
+    color: var(--base03);
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+}
+
+.subtle-tech {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--base02);
+}
+
+.about-small {
+    font-size: 0.85em;
+    color: var(--base01);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.about-footer {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--base1);
+    font-size: 14px;
+    color: var(--base01);
+}
+
+.about-journey {
+    color: var(--base01);
+    font-weight: 500;
+}
+
+.about-current {
+    color: var(--base02);
+    font-family: "Caveat", cursive;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Research Section */
+.research {
+    margin-bottom: 25px;  /* Reduced section spacing */
+    overflow: visible;  /* Allow bracket labels to show */
+}
+
+
+.research-item {
+    margin-bottom: 15px;  /* Reduced spacing between research items */
+    padding-left: 20px;
+}
+
+.paper-title {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.paper-title a {
+    color: var(--base03);  /* Darker text */
+    font-weight: 600;
+}
+
+.paper-title a:hover {
+    /* No text color change - only underline changes via Rough Notation */
+}
+
+.paper-authors {
+    font-size: 15px;
+    color: var(--base02);  /* Darker secondary text */
+    margin-bottom: 2px;
+}
+
+.paper-venue {
+    font-size: 15px;
+    color: var(--base02);  /* Darker secondary text */
+    font-style: italic;
+}
+
+.venue-type {
+    font-style: normal;
+    color: var(--base1);
+}
+
+/* Skills Section */
+.skills {
+    margin-bottom: 30px;
+}
+
+.skills p {
+    margin-bottom: 8px;
+}
+
+/* Blog Section */
+.blog {
+    margin-bottom: 30px;  /* Reduced section spacing */
+}
+
+.blog-list {
+    display: table;
+    width: 100%;
+    border-spacing: 0;
+}
+
+.blog-item {
+    display: table-row;
+}
+
+.blog-date {
+    display: table-cell;
+    width: 90px;
+    padding-right: 20px;
+    color: var(--base02);  /* Darker date text */
+    font-size: 15px;
+    padding-bottom: 8px;  /* Reduced spacing between blog items */
+    vertical-align: top;
+}
+
+.blog-title {
+    display: table-cell;
+    padding-bottom: 8px;  /* Reduced spacing between blog items */
+    vertical-align: top;
+}
+
+.blog-title a {
+    color: var(--base03);  /* Darker text for better readability */
+}
+
+.blog-title a:hover {
+    color: var(--cyan);  /* Cyan on hover */
+}
+
+/* Awards Section */
+.awards {
+    margin-bottom: 30px;
+}
+
+.award-item {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.award-rank {
+    font-size: 16px;
+    color: var(--base03);
+    font-family: "Caveat", cursive;
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+}
+
+.award-content {
+    font-weight: 400;
+    color: var(--base03);
+    flex: 1;
+}
+
+.rank-number {
+    font-family: "Caveat", cursive;
+    font-weight: 600;
+    color: var(--base03);
+}
+
+.rank-suffix {
+    font-size: 0.9em;
+    color: var(--base03);
+    font-family: "Caveat", cursive;
+}
+
+.no-rank-note {
+    font-family: "Caveat", cursive;
+    font-size: 18px;
+    color: var(--base01);
+    opacity: 0.7;
+    font-weight: 600;
+    font-style: italic;
+    transform: rotate(-5deg);
+    display: inline-block;
+}
+
+.math-laugh {
+    font-family: "Caveat", cursive;
+    font-size: 16px;
+    color: var(--base01);
+    opacity: 0.7;
+    font-weight: 600;
+    transform: rotate(3deg);
+    display: inline-block;
+}
+
+.joey-quote {
+    font-family: "Caveat", cursive;
+    font-size: 18px;
+    color: var(--base01);
+    opacity: 0.6;
+    margin: 25px 0;
+    text-align: center;
+    transform: rotate(-1deg);
+    font-weight: 400;
+}
+
+.crossed-word {
+    text-decoration:line-through;
+    opacity: 0.5;
+    margin-right: 5px;
+    color: var(--base00);
+}
+
+/* Coursework text styling */
+.coursework-text {
+    max-width: 85%;
+    word-wrap: break-word;
+    line-height: 1.6;
+    vertical-align: middle;
+}
+
+/* Two Column Layout */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 25px;  /* Reduced top margin */
+    overflow: visible;  /* Allow bracket labels to show */
+}
+
+/* Education Section */
+.education-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;  /* Reduced spacing between education items */
+}
+
+.education-item > div:last-child {
+    max-width: calc(100% - 30px); /* Constrain width to prevent overflow */
+}
+
+.degree-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.degree {
+    font-weight: 500;
+    color: var(--base03);  /* Darker text */
+    margin-bottom: 2px;
+}
+
+.institution {
+    font-size: 15px;
+    color: var(--base02);  /* Darker secondary text */
+}
+
+.institution em {
+    font-style: italic;
+}
+
+/* Work Section */
+.work {
+    overflow: visible;  /* Allow bracket labels to show */
+}
+
+
+.work-item {
+    margin-bottom: 14px;  /* Reduced spacing between work items */
+}
+
+.work-title {
+    font-weight: 500;
+    color: var(--base03);  /* Darker text */
+    margin-bottom: 2px;
+}
+
+.work-details {
+    font-size: 15px;
+    color: var(--base02);  /* Darker secondary text */
+}
+
+.work-details em {
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+    }
+
+    .name {
+        font-size: 36px;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    .blog-date {
+        display: block;
+        width: auto;
+        padding-bottom: 4px;
+    }
+
+    .blog-title {
+        display: block;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}

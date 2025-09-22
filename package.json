@@ -1,0 +1,21 @@
+{
+  "name": "tyler-style-portfolio",
+  "version": "1.0.0",
+  "description": "A personal portfolio website with Tyler Hou's design",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'No build required for static site'",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "academic"
+  ],
+  "author": "Bereket Molla",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
