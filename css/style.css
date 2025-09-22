@@ -215,6 +215,18 @@ a {
     transition: color 0.15s ease;
 }
 
+.inline-link {
+    font-weight: 600;
+    text-decoration-color: rgba(38, 139, 210, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.3s ease;
+    display: inline-block;
+}
+
+.inline-link:hover {
+    text-decoration-color: var(--blue);
+}
+
 a:hover {
     color: var(--base02);  /* Subtle color change on hover */
 }
@@ -433,6 +445,29 @@ a:hover {
     font-weight: 600;
     transform: rotate(3deg);
     display: inline-block;
+}
+
+/* Project tags */
+.project-tag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    font-family: 'Inconsolata', monospace;
+    border-radius: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.writing-tag {
+    font-family: "Caveat", cursive;
+    color: var(--violet);
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
 }
 
 .joey-quote {
