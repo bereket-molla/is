@@ -23,9 +23,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: none !important;
-    -moz-osx-font-smoothing: unset !important;
-    text-rendering: optimizeSpeed !important;
 }
 
 body {
