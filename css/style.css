@@ -306,10 +306,15 @@ a:hover {
 .paper-title a {
     color: var(--base03);  /* Darker text */
     font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(88, 110, 117, 0.3);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+    transition: text-decoration-color 0.2s ease;
 }
 
 .paper-title a:hover {
-    /* No text color change - only underline changes via Rough Notation */
+    text-decoration-color: #2aa198; /* Cyan on hover */
 }
 
 .paper-title-nolink {
