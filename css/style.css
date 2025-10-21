@@ -31,8 +31,6 @@ body {
     line-height: 1.4;  /* Tighter line spacing */
     color: var(--base03);  /* Changed to darkest color for better readability */
     background-color: #fef8e7;  /* Lighter Solarized - between base3 and white */
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: auto;
 }
 
 .container {
@@ -78,8 +76,6 @@ body {
     transition: color 0.2s ease, filter 0.2s ease;
     letter-spacing: 1px;
     font-feature-settings: "kern" 1;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: auto;
 }
 
 .name:hover {
