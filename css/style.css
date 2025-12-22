@@ -335,6 +335,107 @@ a:hover {
     font-style: italic;
 }
 
+.blog-snippet {
+    font-size: 15px;
+    color: var(--base02);
+    margin-bottom: 2px;
+}
+
+.read-more {
+    font-size: 14px;
+    color: var(--base01);
+    margin-top: 6px;
+    display: inline-block;
+}
+
+.read-more:hover {
+    color: var(--base03);
+}
+
+.snippet-link {
+    color: var(--base02);
+    text-decoration: underline;
+    text-decoration-color: var(--base1);
+}
+
+.snippet-link:hover {
+    color: var(--base03);
+}
+
+/* Reading List Section */
+.reading-list {
+    margin-bottom: 30px;
+}
+
+.reading-group {
+    padding-left: 15px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.reading-item {
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+.reading-title {
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.reading-title a {
+    color: var(--base03);
+    font-weight: 500;
+}
+
+.reading-author {
+    font-size: 15px;
+    color: var(--base02);
+}
+
+.reading-status {
+    font-family: "Caveat", cursive;
+    font-size: 14px;
+    color: var(--cyan);
+    margin-left: 8px;
+    opacity: 0.8;
+}
+
+.reading-tag {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-family: 'Inconsolata', monospace;
+    color: var(--base01);
+    border: 1px solid var(--base1);
+    vertical-align: middle;
+}
+
+.reading-note {
+    font-family: "Caveat", cursive;
+    font-size: 18px;
+    color: var(--base01);
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+.credit-note {
+    color: var(--violet);
+    opacity: 0.9;
+}
+
+.credit-link {
+    color: var(--violet);
+    text-decoration: underline;
+    text-decoration-color: var(--violet);
+}
+
+.credit-link:hover {
+    color: var(--violet);
+}
+
 .venue-type {
     font-style: normal;
     color: var(--base1);
@@ -497,6 +598,15 @@ a:hover {
     vertical-align: middle;
 }
 
+.self-learning-note {
+    color: var(--base02);
+    font-family: "Caveat", cursive;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
 /* Two Column Layout */
 .two-column {
     display: grid;
@@ -509,7 +619,7 @@ a:hover {
 /* Education Section */
 .education-item {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 14px;  /* Reduced spacing between education items */
 }
 
@@ -518,8 +628,11 @@ a:hover {
 }
 
 .degree-icon {
-    font-size: 18px;
+    font-size: 11px;
     flex-shrink: 0;
+    color: var(--base03);
+    margin-top: 5px;
+    margin-right:2px;
 }
 
 .degree {
@@ -560,6 +673,23 @@ a:hover {
 
 .work-details em {
     font-style: italic;
+}
+
+.work-link {
+    color: var(--base03);
+    text-decoration: none;
+}
+
+.work-link i {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-left: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.work-link:hover i {
+    opacity: 1;
+    color: var(--cyan);
 }
 
 /* Responsive Design */
